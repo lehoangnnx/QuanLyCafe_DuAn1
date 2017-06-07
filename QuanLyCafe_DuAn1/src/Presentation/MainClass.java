@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package quanlycafe_duan1;
+package Presentation;
 
 /**
  *
  * @author nhung
  */
-public class QuanLyCafe_DuAn1 {
+public class MainClass {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //commit
     }
     
 }
