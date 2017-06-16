@@ -14,8 +14,10 @@ public class MainClass {
     /**
      * @param args the command line arguments
      */
+    public static frmDangNhap frmdn = new frmDangNhap();
     public static void main(String[] args) {
         // TODO code application logic here
+        frmdn.show();
     }
     
 }
