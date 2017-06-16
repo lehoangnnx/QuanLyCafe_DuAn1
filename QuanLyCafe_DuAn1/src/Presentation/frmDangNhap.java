@@ -5,9 +5,14 @@
  */
 package Presentation;
 
+import DAL.*;
+import DTO.*;
+import BLL.*;
 import java.awt.Color;
 import java.awt.Frame;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
@@ -19,6 +24,7 @@ public class frmDangNhap extends javax.swing.JFrame {
     /**
      * Creates new form frmDangNhap
      */
+    MainClass main = new MainClass();
     public frmDangNhap() {
         initComponents();
     }
@@ -45,7 +51,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         txtMatKhau = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnDangNhap = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -161,23 +167,23 @@ public class frmDangNhap extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 20, 77));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(226, 222, 209));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login Rounded Right_25px.png"))); // NOI18N
-        jButton2.setText("Đăng Nhập");
-        jButton2.setBorder(null);
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnDangNhap.setBackground(new java.awt.Color(0, 20, 77));
+        btnDangNhap.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnDangNhap.setForeground(new java.awt.Color(226, 222, 209));
+        btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login Rounded Right_25px.png"))); // NOI18N
+        btnDangNhap.setText("Đăng Nhập");
+        btnDangNhap.setBorder(null);
+        btnDangNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton2MouseEntered(evt);
+                btnDangNhapMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton2MouseExited(evt);
+                btnDangNhapMouseExited(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDangNhapActionPerformed(evt);
             }
         });
 
@@ -192,7 +198,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
@@ -227,7 +233,7 @@ public class frmDangNhap extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -273,20 +279,45 @@ public class frmDangNhap extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        frmHome frmh = new frmHome();
-        frmh.show();
-        this.dispose();
+    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
+        //frmHome frmh = new frmHome();
+        //frmh.show();
+        //this.dispose();
+       
+        String username = txtTenDangNhap.getText();
+        
+        String pwd = String.valueOf(txtMatKhau.getPassword()).trim();
+       
+         
+         EnDeCryption cryption = new EnDeCryption("hoangnlpk00573");
+        String passmahoa = cryption.encoding(pwd);
+        
+        
+        Users u = new Users(username, passmahoa, 1);
+        //UsersDAL.CauTruyVanThemNhanVien(u);
+        if (LoginBLL.KiemTra(username)) {
+            if (passmahoa.equals(LoginBLL.matkhau)) {
+                frmHome frmh = new frmHome();
+                frmh.show();
+                this.dispose();
+            }else{
+                ThongBao("Sai Mật Khẩu", "Lỗi đăng nhập", 2);
+            
+            }
+            
+        }else {
+            ThongBao("Bạn nhập sai tài khoản hoặc mật khẩu", "Lỗi đăng nhập", 2);
+        }
+        
+    }//GEN-LAST:event_btnDangNhapActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
+        btnDangNhap.setBackground(new Color(51, 13, 0));
+    }//GEN-LAST:event_btnDangNhapMouseEntered
 
-    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
-        jButton2.setBackground(new Color(51, 13, 0));
-    }//GEN-LAST:event_jButton2MouseEntered
-
-    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
-        jButton2.setBackground(new Color(0 , 20,77));
-    }//GEN-LAST:event_jButton2MouseExited
+    private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
+        btnDangNhap.setBackground(new Color(0 , 20,77));
+    }//GEN-LAST:event_btnDangNhapMouseExited
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
         jButton1.setBackground(new Color(85, 93, 119));
@@ -295,7 +326,11 @@ public class frmDangNhap extends javax.swing.JFrame {
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         jButton1.setBackground(new Color(0, 13, 51));
     }//GEN-LAST:event_jButton1MouseExited
-
+private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
+        JOptionPane.showMessageDialog(new JFrame(), noiDungThongBao,
+                tieuDeThongBao, icon);
+      
+    }
     /**
      * @param args the command line arguments
      */
@@ -332,8 +367,8 @@ public class frmDangNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDangNhap;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

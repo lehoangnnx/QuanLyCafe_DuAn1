@@ -16,7 +16,7 @@ import java.sql.Statement;
  * @author Ridotoji Pham
  */
 public class ConnectionDB {
-    String SQLConnection = "jdbc:sqlserver://LTSNLH5586-PC"
+    String SQLConnection = "jdbc:sqlserver://localhost"
             + ";databaseName=QLCafe;user=sa;password=123456;";
      static Connection conn;
      public  ConnectionDB(){

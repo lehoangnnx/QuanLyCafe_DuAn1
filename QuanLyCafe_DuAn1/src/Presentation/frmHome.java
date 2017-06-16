@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -34,12 +35,15 @@ public class frmHome extends javax.swing.JFrame {
     }
 
     public void FillBan() {
-        boolean[] checkclick = new boolean[10];
+        ArrayList<Boolean> checkclick = new ArrayList<>();
+        boolean[] check = new boolean[10];
         JPanel[] pnlBan = new JPanel[10];
         JLabel[] lblImgBan = new JLabel[10];
         JLabel[] lblTenBan = new JLabel[10];
-        for (int i = 0; i < 10; i++) {
-            checkclick[i] = false;
+        int i = 0;
+        final int fu = i;
+        for (i = 0; i < 10; i++) {
+            checkclick.add(i, false);
             pnlBan[i] = new javax.swing.JPanel();
             lblImgBan[i] = new javax.swing.JLabel();
             lblTenBan[i] = new javax.swing.JLabel();
@@ -69,6 +73,7 @@ public class frmHome extends javax.swing.JFrame {
                                     .addComponent(lblTenBan[i])
                                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
+            int j = i;
 
             pnlBan[i].addMouseListener(new MouseAdapter() {
 
@@ -79,7 +84,7 @@ public class frmHome extends javax.swing.JFrame {
 
                 @Override
                 public void mouseExited(MouseEvent e) {
-                    if (checkclick[1]) {
+                    if (checkclick.get(j)) {
                         e.getComponent().setBackground(Color.yellow);
                     } else {
 
@@ -89,11 +94,19 @@ public class frmHome extends javax.swing.JFrame {
 
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    if (checkclick[1]) {
-                        checkclick[1] = false;
+                    if (checkclick.get(j)) {
+                        checkclick.set(j, false);
                         e.getComponent().setBackground(Color.yellow);
                     } else {
-                        checkclick[1] = true;
+                        checkclick.set(j, true);
+                        for (int k = 0; k < 10; k++) {
+                            if (k != j) {
+                                checkclick.set(k, false);
+                                pnlBan[k].setBackground(new java.awt.Color(240, 240, 240));
+                            }
+                                
+                        }
+                        
                     }
 
                 }
@@ -106,7 +119,7 @@ public class frmHome extends javax.swing.JFrame {
 
         System.out.println(checkclick);
     }
-
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -958,12 +971,12 @@ public class frmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel105MouseExited
 
     private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
-         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/List_40px_1.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/List_40px_1.png")));
         jLabel7.setFont(new Font("Tahoma", Font.BOLD, 12));
     }//GEN-LAST:event_jLabel4MouseEntered
 
     private void jLabel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseExited
-         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/List_40px.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/List_40px.png")));
         jLabel7.setFont(new Font("Tahoma", Font.PLAIN, 12));
     }//GEN-LAST:event_jLabel4MouseExited
 
@@ -973,18 +986,18 @@ public class frmHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseEntered
 
     private void jLabel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseExited
-         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Todo List_40px.png")));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Todo List_40px.png")));
         jLabel3.setFont(new Font("Tahoma", Font.PLAIN, 12));
     }//GEN-LAST:event_jLabel2MouseExited
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cash Register_40px_1.png")));
-       // jLabel9.setForeground(Color.GREEN);
+        // jLabel9.setForeground(Color.GREEN);
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cash Register_40px.png")));
-       // jLabel9.setForeground(Color.BLACK);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cash Register_40px.png")));
+        // jLabel9.setForeground(Color.BLACK);
     }//GEN-LAST:event_jLabel8MouseExited
     public int a = 0;
 
