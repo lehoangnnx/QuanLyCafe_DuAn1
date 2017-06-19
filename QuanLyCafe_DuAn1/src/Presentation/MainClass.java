@@ -5,8 +5,13 @@
  */
 package Presentation;
 
+import BLL.HoaDonBLL;
+import DAL.ChiTietHoaDonDAL;
 import DAL.ConnectionDB;
+import java.math.BigDecimal;
 import java.sql.Connection;
+import java.util.Random;
+import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -22,8 +27,9 @@ public class MainClass {
     public static frmDangNhap frmdn = new frmDangNhap();
     public static ConnectionDB Connection = new ConnectionDB();
     public static void main(String[] args) {
-        // TODO code application logic here
+        //ChiTietHoaDonDAL.getChiTietHoaDonBySoHoaDon("20170618152215");
         frmdn.show();
+        
     }
    
 }

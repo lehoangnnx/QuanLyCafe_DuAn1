@@ -14,30 +14,45 @@ import java.util.Date;
  */
 public class HoaDon {
 
-    private int Id;
-    private Date Gioden;
+    
+    private String SoHoaDon;
+    private String Gioden;
     private BigDecimal Tongtien;
     private BigDecimal Giamgia;
     private int IdUser;
     private int Trangthai;
     private int Idban;
 
+    public HoaDon(String SoHoaDon, String Gioden, BigDecimal Tongtien, BigDecimal Giamgia, int IdUser, int Trangthai, int Idban) {
+        this.SoHoaDon = SoHoaDon;
+        this.Gioden = Gioden;
+        this.Tongtien = Tongtien;
+        this.Giamgia = Giamgia;
+        this.IdUser = IdUser;
+        this.Trangthai = Trangthai;
+        this.Idban = Idban;
+    }
+
+    public String getSoHoaDon() {
+        return SoHoaDon;
+    }
+
+    public void setSoHoaDon(String SoHoaDon) {
+        this.SoHoaDon = SoHoaDon;
+    }
+
+    
+    
     public HoaDon() {
     }
 
-    public int getId() {
-        return Id;
-    }
+   
 
-    public void setId(int Id) {
-        this.Id = Id;
-    }
-
-    public Date getGioden() {
+    public String getGioden() {
         return Gioden;
     }
 
-    public void setGioden(Date Gioden) {
+    public void setGioden(String Gioden) {
         this.Gioden = Gioden;
     }
 

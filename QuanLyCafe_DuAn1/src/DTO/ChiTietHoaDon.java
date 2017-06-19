@@ -14,10 +14,17 @@ import java.math.BigDecimal;
 public class ChiTietHoaDon {
 
     private int Id;
-    private int Idhoadon;
+    private String SoHoaDon;
     private int Idthucdon;
     private int Soluong;
     private BigDecimal Gia;
+
+    public ChiTietHoaDon(String SoHoaDon, int Idthucdon, int Soluong, BigDecimal Gia) {
+        this.SoHoaDon = SoHoaDon;
+        this.Idthucdon = Idthucdon;
+        this.Soluong = Soluong;
+        this.Gia = Gia;
+    }
 
     public ChiTietHoaDon() {
     }
@@ -30,13 +37,15 @@ public class ChiTietHoaDon {
         this.Id = Id;
     }
 
-    public int getIdhoadon() {
-        return Idhoadon;
+    public String getSoHoaDon() {
+        return SoHoaDon;
     }
 
-    public void setIdhoadon(int Idhoadon) {
-        this.Idhoadon = Idhoadon;
+    public void setSoHoaDon(String SoHoaDon) {
+        this.SoHoaDon = SoHoaDon;
     }
+
+    
 
     public int getIdthucdon() {
         return Idthucdon;

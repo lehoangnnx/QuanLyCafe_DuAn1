@@ -19,12 +19,14 @@ import org.mindrot.jbcrypt.BCrypt;
  * @author LTSNLH5586
  */
 public class frmDangNhap extends javax.swing.JFrame {
+
     int xMouse;
     int yMouse;
     /**
      * Creates new form frmDangNhap
      */
     MainClass main = new MainClass();
+
     public frmDangNhap() {
         initComponents();
     }
@@ -169,7 +171,7 @@ public class frmDangNhap extends javax.swing.JFrame {
 
         btnDangNhap.setBackground(new java.awt.Color(0, 20, 77));
         btnDangNhap.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnDangNhap.setForeground(new java.awt.Color(226, 222, 209));
+        btnDangNhap.setForeground(new java.awt.Color(255, 255, 255));
         btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login Rounded Right_25px.png"))); // NOI18N
         btnDangNhap.setText("Đăng Nhập");
         btnDangNhap.setBorder(null);
@@ -283,32 +285,30 @@ public class frmDangNhap extends javax.swing.JFrame {
         //frmHome frmh = new frmHome();
         //frmh.show();
         //this.dispose();
-       
         String username = txtTenDangNhap.getText();
-        
         String pwd = String.valueOf(txtMatKhau.getPassword()).trim();
-       
-         
-         EnDeCryption cryption = new EnDeCryption("hoangnlpk00573");
+        EnDeCryption cryption = new EnDeCryption("hoangnlpk00573");
         String passmahoa = cryption.encoding(pwd);
-        
-        
         Users u = new Users(username, passmahoa, 1);
         //UsersDAL.CauTruyVanThemNhanVien(u);
-        if (LoginBLL.KiemTra(username)) {
+        if (username.equals("")) {
+            ThongBao("Nhập Tên Đăng Nhập!", "Lỗi đăng nhập", 1);
+        } else if (pwd.equals("")) {
+            ThongBao("Nhập Mật Khẩu!", "Lỗi đăng nhập", 1);
+        } else if (LoginBLL.KiemTra(username)) {
             if (passmahoa.equals(LoginBLL.matkhau)) {
                 frmHome frmh = new frmHome();
                 frmh.show();
                 this.dispose();
-            }else{
+            } else {
                 ThongBao("Sai Mật Khẩu", "Lỗi đăng nhập", 2);
-            
+
             }
-            
-        }else {
+
+        } else {
             ThongBao("Bạn nhập sai tài khoản hoặc mật khẩu", "Lỗi đăng nhập", 2);
         }
-        
+
     }//GEN-LAST:event_btnDangNhapActionPerformed
 
     private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
@@ -316,7 +316,7 @@ public class frmDangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangNhapMouseEntered
 
     private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
-        btnDangNhap.setBackground(new Color(0 , 20,77));
+        btnDangNhap.setBackground(new Color(0, 20, 77));
     }//GEN-LAST:event_btnDangNhapMouseExited
 
     private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
@@ -326,11 +326,12 @@ public class frmDangNhap extends javax.swing.JFrame {
     private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
         jButton1.setBackground(new Color(0, 13, 51));
     }//GEN-LAST:event_jButton1MouseExited
-private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
+    private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
         JOptionPane.showMessageDialog(new JFrame(), noiDungThongBao,
                 tieuDeThongBao, icon);
-      
+
     }
+
     /**
      * @param args the command line arguments
      */

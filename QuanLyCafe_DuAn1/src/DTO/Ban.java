@@ -14,8 +14,16 @@ public class Ban {
     private int Id;
     private String Tenban;
     private int Trangthai;
-
+private String SoHoaDon;
     public Ban() {
+    }
+
+    public String getSoHoaDon() {
+        return SoHoaDon;
+    }
+
+    public void setSoHoaDon(String SoHoaDon) {
+        this.SoHoaDon = SoHoaDon;
     }
 
     public int getId() {
@@ -42,4 +50,13 @@ public class Ban {
         this.Trangthai = Trangthai;
     }
 
+    public Ban(int Id, String Tenban, int Trangthai, String SoHoaDon) {
+        this.Id = Id;
+        this.Tenban = Tenban;
+        this.Trangthai = Trangthai;
+        this.SoHoaDon = SoHoaDon;
+    }
+
+    
+    
 }
