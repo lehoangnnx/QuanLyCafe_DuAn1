@@ -29,6 +29,11 @@ public class HoaDonBLL {
             HoaDonDAL.updateTongTienHoaDon(soHoaDon, tongTien);
         
     } 
+      public static void updateTrangThaiHoaDon(String soHoaDon ,int trangThai) {
+        
+            HoaDonDAL.updateTrangThaiHoaDon(soHoaDon, trangThai);
+        
+    } 
      public static void deleteHoaDon(String soHoaDon) {
         
             HoaDonDAL.deleteHoaDon(soHoaDon);

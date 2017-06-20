@@ -17,15 +17,27 @@ public class HoaDon {
     
     private String SoHoaDon;
     private String Gioden;
+    private String NgayTao;
     private BigDecimal Tongtien;
     private BigDecimal Giamgia;
     private int IdUser;
     private int Trangthai;
     private int Idban;
 
-    public HoaDon(String SoHoaDon, String Gioden, BigDecimal Tongtien, BigDecimal Giamgia, int IdUser, int Trangthai, int Idban) {
+//    public HoaDon(String SoHoaDon, String Gioden, BigDecimal Tongtien, BigDecimal Giamgia, int IdUser, int Trangthai, int Idban) {
+//        this.SoHoaDon = SoHoaDon;
+//        this.Gioden = Gioden;
+//        this.Tongtien = Tongtien;
+//        this.Giamgia = Giamgia;
+//        this.IdUser = IdUser;
+//        this.Trangthai = Trangthai;
+//        this.Idban = Idban;
+//    }
+
+    public HoaDon(String SoHoaDon, String Gioden, String NgayTao, BigDecimal Tongtien, BigDecimal Giamgia, int IdUser, int Trangthai, int Idban) {
         this.SoHoaDon = SoHoaDon;
         this.Gioden = Gioden;
+        this.NgayTao = NgayTao;
         this.Tongtien = Tongtien;
         this.Giamgia = Giamgia;
         this.IdUser = IdUser;
@@ -44,6 +56,14 @@ public class HoaDon {
     
     
     public HoaDon() {
+    }
+
+    public String getNgayTao() {
+        return NgayTao;
+    }
+
+    public void setNgayTao(String NgayTao) {
+        this.NgayTao = NgayTao;
     }
 
    

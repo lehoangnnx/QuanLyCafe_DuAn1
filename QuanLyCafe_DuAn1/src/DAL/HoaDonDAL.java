@@ -19,8 +19,8 @@ import java.util.logging.Logger;
 public class HoaDonDAL {
 
     public static void addHoaDon(HoaDon hd) {
-        String sql = "insert into HoaDon(SoHoaDon,GioDen,TongTien,GiamGia,IdUser,TrangThai,Idban) "
-                + "values('" + hd.getSoHoaDon() + "','" + hd.getGioden() + "'," + hd.getTongtien() + "," + hd.getGiamgia() + "," + hd.getIdUser() + "," + hd.getTrangthai() + "," + hd.getIdban() + ")";
+        String sql = "insert into HoaDon(SoHoaDon,GioDen,NgayTao,TongTien,GiamGia,IdUser,TrangThai,Idban) "
+                + "values('" + hd.getSoHoaDon() + "','" + hd.getGioden() + "','" + hd.getNgayTao()+ "'," + hd.getTongtien() + "," + hd.getGiamgia() + "," + hd.getIdUser() + "," + hd.getTrangthai() + "," + hd.getIdban() + ")";
         ConnectionDB.ExcuteQueryUpdate(sql);
     }
 
@@ -32,6 +32,10 @@ public class HoaDonDAL {
         String sql = "update HoaDon set Tongtien =" + tongTien + " where SoHoaDon = '" + soHoaDon + "'";
         ConnectionDB.ExcuteQueryUpdate(sql);
     }
+ public static void updateTrangThaiHoaDon(String soHoaDon ,int trangThai) {
+        String sql = "update HoaDon set Trangthai =" + trangThai + " where SoHoaDon = '" + soHoaDon + "'";
+        ConnectionDB.ExcuteQueryUpdate(sql);
+    }
     public static HoaDon getHoaDonBySoHoaDon(String soHoaDon) {
         ResultSet rs;
 
@@ -40,6 +44,7 @@ public class HoaDonDAL {
         HoaDon hoaDon = new HoaDon();
         try {
             while (rs.next()) {
+                hoaDon.setSoHoaDon(rs.getString("SoHoaDon"));
                 hoaDon.setGioden(rs.getString("Gioden"));
                 hoaDon.setTongtien(new BigDecimal(rs.getString("Tongtien")));
             }

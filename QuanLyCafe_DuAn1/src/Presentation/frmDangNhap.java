@@ -10,6 +10,7 @@ import DTO.*;
 import BLL.*;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import org.mindrot.jbcrypt.BCrypt;
@@ -149,6 +150,11 @@ public class frmDangNhap extends javax.swing.JFrame {
                 txtMatKhauActionPerformed(evt);
             }
         });
+        txtMatKhau.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMatKhauKeyPressed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(0, 13, 51));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -285,6 +291,33 @@ public class frmDangNhap extends javax.swing.JFrame {
         //frmHome frmh = new frmHome();
         //frmh.show();
         //this.dispose();
+        login();
+
+    }//GEN-LAST:event_btnDangNhapActionPerformed
+    
+    private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
+        btnDangNhap.setBackground(new Color(51, 13, 0));
+    }//GEN-LAST:event_btnDangNhapMouseEntered
+
+    private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
+        btnDangNhap.setBackground(new Color(0, 20, 77));
+    }//GEN-LAST:event_btnDangNhapMouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        jButton1.setBackground(new Color(85, 93, 119));
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        jButton1.setBackground(new Color(0, 13, 51));
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void txtMatKhauKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMatKhauKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+           login();
+        }
+    }//GEN-LAST:event_txtMatKhauKeyPressed
+    
+    private void login() {
         String username = txtTenDangNhap.getText();
         String pwd = String.valueOf(txtMatKhau.getPassword()).trim();
         EnDeCryption cryption = new EnDeCryption("hoangnlpk00573");
@@ -308,24 +341,7 @@ public class frmDangNhap extends javax.swing.JFrame {
         } else {
             ThongBao("Bạn nhập sai tài khoản hoặc mật khẩu", "Lỗi đăng nhập", 2);
         }
-
-    }//GEN-LAST:event_btnDangNhapActionPerformed
-
-    private void btnDangNhapMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseEntered
-        btnDangNhap.setBackground(new Color(51, 13, 0));
-    }//GEN-LAST:event_btnDangNhapMouseEntered
-
-    private void btnDangNhapMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDangNhapMouseExited
-        btnDangNhap.setBackground(new Color(0, 20, 77));
-    }//GEN-LAST:event_btnDangNhapMouseExited
-
-    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
-        jButton1.setBackground(new Color(85, 93, 119));
-    }//GEN-LAST:event_jButton1MouseEntered
-
-    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
-        jButton1.setBackground(new Color(0, 13, 51));
-    }//GEN-LAST:event_jButton1MouseExited
+    }
     private void ThongBao(String noiDungThongBao, String tieuDeThongBao, int icon) {
         JOptionPane.showMessageDialog(new JFrame(), noiDungThongBao,
                 tieuDeThongBao, icon);

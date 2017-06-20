@@ -29,7 +29,7 @@ public class MainClass {
     public static void main(String[] args) {
         //ChiTietHoaDonDAL.getChiTietHoaDonBySoHoaDon("20170618152215");
         frmdn.show();
-        
+      
     }
    
 }

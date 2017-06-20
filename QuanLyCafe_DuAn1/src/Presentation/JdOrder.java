@@ -400,12 +400,12 @@ public class JdOrder extends javax.swing.JDialog {
         DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-        String gioDen = dtf.format(now);
+        String gioDenVaNow = dtf.format(now);
         String createSoHoaDon = dtf1.format(now);
         if (frmHome.soHoaDon.equals("null")) {
             frmHome.soHoaDon = createSoHoaDon;
             BanDAL.updateTrangThaiVaSoHoaDon(frmHome.selectBan, frmHome.soHoaDon, 3);
-            HoaDon hd = new HoaDon(createSoHoaDon, gioDen, new BigDecimal(0), new BigDecimal(0), LoginBLL.manv, 0, frmHome.selectBan);
+            HoaDon hd = new HoaDon(createSoHoaDon, gioDenVaNow,gioDenVaNow, new BigDecimal(0), new BigDecimal(0), LoginBLL.manv, 0, frmHome.selectBan);
             HoaDonBLL.addHoaDon(hd);
 
         }

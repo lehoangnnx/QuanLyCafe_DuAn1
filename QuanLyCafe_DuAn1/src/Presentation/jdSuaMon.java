@@ -311,7 +311,7 @@ public class jdSuaMon extends javax.swing.JDialog {
        // frmHome.tenBan = "";
        // frmHome.soHoaDon = "";
         this.dispose();
-        System.out.println(frmHome.selectBan + frmHome.trangThaiBan);
+        //System.out.println(frmHome.selectBan + frmHome.trangThaiBan);
     }//GEN-LAST:event_btnHuyMousePressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

@@ -157,7 +157,7 @@ public class jdGioDen extends javax.swing.JDialog {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
-
+        String gioDenVaNow = dtf.format(now);   
         try {
 
             if (date != null) {
@@ -169,7 +169,7 @@ public class jdGioDen extends javax.swing.JDialog {
                     if (frmHome.soHoaDon.equals("null")) {
                         frmHome.soHoaDon = createSoHoaDon;
                         BanDAL.updateTrangThaiVaSoHoaDon(frmHome.selectBan, frmHome.soHoaDon, 2);
-                        HoaDon hd = new HoaDon(createSoHoaDon, gioDen, new BigDecimal(0), new BigDecimal(0), LoginBLL.manv, 0, frmHome.selectBan);
+                        HoaDon hd = new HoaDon(createSoHoaDon, gioDen,gioDenVaNow, new BigDecimal(0), new BigDecimal(0), LoginBLL.manv, 0, frmHome.selectBan);
                         HoaDonBLL.addHoaDon(hd);
                         JOptionPane.showMessageDialog(null, "Đặt Bàn Thành Công");
                         this.dispose();
